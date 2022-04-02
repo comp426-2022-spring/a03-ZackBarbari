@@ -7,7 +7,7 @@ args["port"]
 const port = args.port || process.env.PORT || 5000;
 
 const server = app.listen(port, () => {
-    console.log('App listening on port %PORT%'.replace('%PORT%',port))
+    console.log('App listening on port %PORT%'.replace('%PORT%', port))
 });
 
 app.use(function(req, res){
@@ -64,9 +64,4 @@ function flipACoin(call) {
 app.get('/app/flip/', (req, res) => {
   const flip = coinFlip()
 	res.status(200).json({"flip" : flip})
-});
-
-app.get('/app/flips/:number', (req, res) => {
-  const flips = manyflips(req.params.number)
-	res.status(200).send('OK')
 });
