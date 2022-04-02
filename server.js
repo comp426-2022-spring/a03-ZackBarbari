@@ -13,7 +13,7 @@ const server = app.listen(port, () => {
 app.get('/app/', (req, res) => {
       res.statusCode = 200;
       res.statusMessage = 'OK';
-      res.status(statusCode).end(res.statusCode+ ' ' +res.statusMessage);
+      res.end(res.statusCode+ ' ' +res.statusMessage);
       res.type("text/plain");
 });
 
@@ -63,5 +63,8 @@ app.get('/app/flip/', (req, res) => {
 });
 
 app.use(function(req, res){
-  res.status(404).send('404 NOT FOUND');
+  res.statusCode = 404;
+      res.statusMessage = 'NOT FOUND';
+      res.end(res.statusCode+ ' ' +res.statusMessage);
+      res.type("text/plain");
 });
