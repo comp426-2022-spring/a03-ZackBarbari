@@ -2,12 +2,12 @@ const express = require('express')
 const app = express()
 const args = require('minimist')(process.argv.slice(2))
 
-args["HTTP_PORT"]
+args["port"]
 
-const HTTP_PORT = args.port || process.env.PORT || 5000
+const port = args.port || process.env.PORT || 5000
 
-const server = app.listen(HTTP_PORT, () => {
-    console.log('App listening on port %PORT%'.replace('%PORT%',HTTP_PORT))
+const server = app.listen(port, () => {
+    console.log('App listening on port %PORT%'.replace('%PORT%',port))
 });
 
 app.use(function(req, res){
@@ -15,10 +15,9 @@ app.use(function(req, res){
 });
 
 app.get('/app/', (req, res) => {
-  // Respond with status 200
-    res.statusCode = 200;
-  // Respond with status message "OK"
+      res.statusCode = 200;
       res.statusMessage = 'OK';
+      res.status(statusCode).send(statusMessage)
       res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
       res.end(res.statusCode+ ' ' +res.statusMessage)
 });
