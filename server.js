@@ -62,3 +62,13 @@ function flipACoin(call) {
     }
     return coin
 }
+
+app.get('/app/flip/', (req, res) => {
+  const flip = coinFlip()
+	res.status(200).json({"flip" : flip})
+});
+
+app.get('/app/flips/:number', (req, res) => {
+  const flips = manyflips(req.params.number)
+	res.status(200).send('OK')
+});
