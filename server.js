@@ -17,8 +17,8 @@ app.use(function(req, res){
 app.get('/app/', (req, res) => {
       res.statusCode = 200;
       res.statusMessage = 'OK';
-      res.status(statusCode).end(res.statusCode+ ' ' +res.statusMessage)
-      res.type("text/plain")
+      res.status(statusCode).end(res.statusCode+ ' ' +res.statusMessage);
+      res.type("text/plain");
 });
 
 function coinFlip() {
