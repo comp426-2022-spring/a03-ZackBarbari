@@ -10,10 +10,6 @@ const server = app.listen(port, () => {
     console.log('App listening on port %PORT%'.replace('%PORT%', port))
 });
 
-app.use(function(req, res){
-  res.status(404).send('404 NOT FOUND');
-});
-
 app.get('/app/', (req, res) => {
       res.statusCode = 200;
       res.statusMessage = 'OK';
@@ -64,4 +60,8 @@ function flipACoin(call) {
 app.get('/app/flip/', (req, res) => {
   const flip = coinFlip()
 	res.status(200).json({"flip" : flip})
+});
+
+app.use(function(req, res){
+  res.status(404).send('404 NOT FOUND');
 });
